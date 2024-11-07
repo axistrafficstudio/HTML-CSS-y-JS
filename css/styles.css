@@ -1,0 +1,165 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+img{ /*Esto hace que todas las imágenes sean responsive*/
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+header {
+    height: 100vh;
+    background-color: greenyellow;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rm;
+}
+
+header button{
+    width: 14rem;
+    padding: 1rem 2rem;
+    outline: none;
+    border: none;
+    background-color: blueviolet;
+    color: aliceblue;
+    font-weight: bold;
+
+    /*La propiedad transition siempre debe encontrarse en el estado inicial del elemento al que le queramos meter el hover*/
+    transition: 0.333s;
+    transform: skew(10deg)
+}
+
+header button:hover{
+    cursor: pointer;
+    color: blueviolet;
+    background-color: aliceblue;
+    transform: scale(1.05) rotate(5deg);
+}
+
+h1{
+    font-size: 3.2rem;
+}
+
+h2{
+    font-size: 3.2rem;
+}
+
+#menu {
+    background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    align-items: center;
+}
+
+#menu .fa-xmark,
+#menu .fa-bars{
+color: aliceblue;
+cursor: pointer;
+}
+
+nav .menu-flex.show-menu{
+top: 0;
+} 
+
+#menu #btnOpenMenu,
+#menu #btnCloseMenu{
+    display: none;
+}
+nav .menu-flex {
+    background-color: blueviolet;
+    padding: 1rem;
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    justify-content: space-around;
+}
+
+nav .menu-flex a{ /*Al poner esa a, selecciona SOLO los enlaces que hemos metido en la lista*/
+    text-decoration: none;
+    color: aliceblue;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: 0.33s; /*no se mete en el hover para que esta transición suceda cuando pones el ratón y cuando lo quitas, en el hover solo aparecería al poner el ratón encima, pero al quitarlo el cambio sería instantáneo*/
+    
+}
+
+nav .menu-flex a:hover{
+    color:blueviolet;
+    background-color: aliceblue;
+}
+
+/*GALLERY*/
+
+#gallery {
+    padding: 6rem;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+#gallery .gallery-cont{
+    display: grid;
+    grid-template-columns: auto auto auto; /*cada auto marca una columna nueva, el auto hace que se apliquen las mismas modificaciones a todas, pero si x ejemplo pones 25%, 50% y 25%, altera los tamaños de cada columna de forma independiente*/
+    gap: 1rem;
+}
+
+/*Esto fuerza que todas las imágenes se adapten al contenedor, establece que las imágenes lleguen a su 100% de altura, y el cover recorta las partes de la imágen que por tamaño saldrían de la pantalla*/
+
+#gallery .gallery-cont img{ 
+    object-fit: cover;
+    height: 100%;
+}
+
+/* ANIMATIONS */
+
+
+/* MEDIA QUERIE*/
+
+/*Dentro de los paréntesis del media query, definimos el breakpoint en píxeles*/
+
+/*max-width (desktop-first) -> Menos de x píxeles
+
+max-width se puede escribir tb como width <= x */
+
+@media screen and (width <= 512px) {
+    
+    h1,h2 {
+        font-size: 2rem;
+        text-align: center;
+    }
+    nav .menu-flex {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+        background-color: rgb(0, 53, 88);
+
+        position: fixed;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+    }
+    
+    #menu #btnOpenMenu,
+    #menu #btnCloseMenu{
+        display: block;
+    }
+    header button{
+        display: none; /*la diferencia entre opacity 0 y display none es que bajar la opacidad hace que sea invisible pero ocupe espacio, display none hace que desaparezca, pero del renderizado, el botón sigue en el html*/
+        
+    }
+
+    #gallery .gallery-cont{
+        grid-template-columns: auto;
+    }
+}
