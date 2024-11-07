@@ -107,19 +107,43 @@ title.addEventListener("mouseout", function(){
 
 // Para cerrar el menu vamos a detectar el click en el icono .fa-xmark y le vamos a quitar la clase al menu ul
 
-let menuOpts = document.querySelector("#menu .menu-flex");
-let btnOpenMenu = document.querySelector("#btnOpenMenu .fa-bars");
-let btnCloseMenu = document.querySelector("#btnCloseMenu .fa-xmark");
+// let menuOpts = document.querySelector("#menu .menu-flex");
+// let btnOpenMenu = document.querySelector("#btnOpenMenu .fa-bars");
+// let btnCloseMenu = document.querySelector("#btnCloseMenu .fa-xmark");
 
-btnOpenMenu.addEventListener("click", function(){
-    menuOpts.classList.toggle("show-menu");
-});
+// btnOpenMenu.addEventListener("click", function(){
+//     menuOpts.classList.toggle("show-menu");
+// });
 
-btnCloseMenu.addEventListener("click", function(){
-    menuOpts.classList.remove.remove("show-menu");
-});
+// btnCloseMenu.addEventListener("click", function(){
+//     menuOpts.classList.remove.remove("show-menu");
+// });
 
 // Usando la función toggle () 
 // añadimos al HTML de la galería un botón que al ser pulsado va a "apagar" el color de fondo de la galería 
 // tiene que cambiar el color de fondo 
 // tenemos que declarar algunas clases de CSS
+
+// Menú móvil
+let menuOpts = document.querySelector("#menu .menu-flex");
+let btnOpenMenu = document.querySelector("#btnOpenMenu .fa-bars");
+let btnCloseMenu = document.querySelector("#btnCloseMenu .fa-xmark");
+
+// Abrir el menú
+btnOpenMenu.addEventListener("click", function() {
+    menuOpts.classList.add("show-menu"); // Añadir clase para mostrar el menú
+});
+
+// Cerrar el menú
+btnCloseMenu.addEventListener("click", function() {
+    menuOpts.classList.remove("show-menu"); // Eliminar la clase para ocultar el menú
+});
+
+// Cambio de fondo de la galería
+let gallery = document.querySelector("#gallery");
+let toggleBgBtn = document.querySelector("#toggleBgBtn");
+
+toggleBgBtn.addEventListener("click", function() {
+    gallery.classList.toggle("bg-dark");  // Alternar entre bg-dark y bg-light
+    gallery.classList.toggle("bg-light");
+});

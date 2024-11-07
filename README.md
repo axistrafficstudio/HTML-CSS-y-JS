@@ -1,4 +1,4 @@
-# REPASO-HTML-XERO9D
+# REPASO-HTML
  
  El archivo index.html debe llamarse SIEMPRE así para que el servidor web (cuando la web sea pública en internet) sepa qué archivo debe cargar por defecto.
 
@@ -10,7 +10,7 @@ Las etiquetas <meta> de HTML siempre se encontrarán en el <head></head> del doc
     - La etiqueta <meta> de codificación. Para cargar el set de caracteres que necesitaremos en la web.
     - La etiqueta <meta> para indicar al navegador que la web es responsive. name="viewport"
 
-Para activar el "word wrap" -> Al+Z
+Para activar el "word wrap" -> Al+Zz
 
 Para abrir la web en el navegador:
     - Botón "Go Live" en la interfaz de Visual abajo a la derecha.

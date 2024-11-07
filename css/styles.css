@@ -1,11 +1,11 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Courier New', Courier, monospace;
 }
 
-img{ /*Esto hace que todas las imágenes sean responsive*/
+img {
     width: 100%;
     height: auto;
     vertical-align: middle;
@@ -18,10 +18,10 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rm;
+    gap: 1rem;
 }
 
-header button{
+header button {
     width: 14rem;
     padding: 1rem 2rem;
     outline: none;
@@ -29,25 +29,15 @@ header button{
     background-color: blueviolet;
     color: aliceblue;
     font-weight: bold;
-
-    /*La propiedad transition siempre debe encontrarse en el estado inicial del elemento al que le queramos meter el hover*/
     transition: 0.333s;
-    transform: skew(10deg)
+    transform: skew(10deg);
 }
 
-header button:hover{
+header button:hover {
     cursor: pointer;
     color: blueviolet;
     background-color: aliceblue;
     transform: scale(1.05) rotate(5deg);
-}
-
-h1{
-    font-size: 3.2rem;
-}
-
-h2{
-    font-size: 3.2rem;
 }
 
 #menu {
@@ -59,19 +49,25 @@ h2{
 }
 
 #menu .fa-xmark,
-#menu .fa-bars{
-color: aliceblue;
-cursor: pointer;
+#menu .fa-bars {
+    color: aliceblue;
+    cursor: pointer;
 }
 
-nav .menu-flex.show-menu{
-top: 0;
-} 
+nav .menu-flex.show-menu {
+    top: 0;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+}
 
 #menu #btnOpenMenu,
-#menu #btnCloseMenu{
+#menu #btnCloseMenu {
     display: none;
 }
+
 nav .menu-flex {
     background-color: blueviolet;
     padding: 1rem;
@@ -79,27 +75,29 @@ nav .menu-flex {
     list-style: none;
     gap: 2rem;
     justify-content: space-around;
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
 }
 
-nav .menu-flex a{ /*Al poner esa a, selecciona SOLO los enlaces que hemos metido en la lista*/
+nav .menu-flex a {
     text-decoration: none;
     color: aliceblue;
     font-weight: bold;
     padding: 10px 20px;
-    transition: 0.33s; /*no se mete en el hover para que esta transición suceda cuando pones el ratón y cuando lo quitas, en el hover solo aparecería al poner el ratón encima, pero al quitarlo el cambio sería instantáneo*/
-    
+    transition: 0.33s;
 }
 
-nav .menu-flex a:hover{
-    color:blueviolet;
+nav .menu-flex a:hover {
+    color: blueviolet;
     background-color: aliceblue;
 }
 
-/*GALLERY*/
-
+/* Galería */
 #gallery {
     padding: 6rem;
-    background-color: blue;
+    background-color: rgb(155, 155, 187);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -107,59 +105,52 @@ nav .menu-flex a:hover{
     gap: 2rem;
 }
 
-#gallery .gallery-cont{
+#gallery .gallery-cont {
     display: grid;
-    grid-template-columns: auto auto auto; /*cada auto marca una columna nueva, el auto hace que se apliquen las mismas modificaciones a todas, pero si x ejemplo pones 25%, 50% y 25%, altera los tamaños de cada columna de forma independiente*/
+    grid-template-columns: auto auto auto;
     gap: 1rem;
 }
 
-/*Esto fuerza que todas las imágenes se adapten al contenedor, establece que las imágenes lleguen a su 100% de altura, y el cover recorta las partes de la imágen que por tamaño saldrían de la pantalla*/
-
-#gallery .gallery-cont img{ 
+#gallery .gallery-cont img {
     object-fit: cover;
     height: 100%;
 }
 
-/* ANIMATIONS */
+.bg-dark {
+    background-color: #27292c;
+    color: rgb(161, 83, 83);
+}
 
+.bg-light {
+    background-color: #f0f0f0;
+    color: #333;
+}
 
-/* MEDIA QUERIE*/
-
-/*Dentro de los paréntesis del media query, definimos el breakpoint en píxeles*/
-
-/*max-width (desktop-first) -> Menos de x píxeles
-
-max-width se puede escribir tb como width <= x */
-
-@media screen and (width <= 512px) {
-    
-    h1,h2 {
-        font-size: 2rem;
-        text-align: center;
-    }
-    nav .menu-flex {
+/* Media Query */
+@media screen and (max-width: 512px) {
+    #menu .menu-flex {
         flex-direction: column;
         text-align: center;
         gap: 1rem;
         background-color: rgb(0, 53, 88);
-
         position: fixed;
-        top: -100%;
+        top: 0;
         left: 0;
         width: 100%;
         height: 100vh;
-    }
-    
-    #menu #btnOpenMenu,
-    #menu #btnCloseMenu{
-        display: block;
-    }
-    header button{
-        display: none; /*la diferencia entre opacity 0 y display none es que bajar la opacidad hace que sea invisible pero ocupe espacio, display none hace que desaparezca, pero del renderizado, el botón sigue en el html*/
-        
+        z-index: 999;
     }
 
-    #gallery .gallery-cont{
+    #menu #btnOpenMenu,
+    #menu #btnCloseMenu {
+        display: block;
+    }
+
+    header button {
+        display: none;
+    }
+
+    #gallery .gallery-cont {
         grid-template-columns: auto;
     }
 }
